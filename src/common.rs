@@ -2101,6 +2101,15 @@ pub fn load_custom_client() {
         };
         read_custom_client(&data.trim());
     }
+    // Force hide server settings for custom client
+    config::BUILTIN_SETTINGS
+        .write()
+        .unwrap()
+        .insert(keys::OPTION_HIDE_SERVER_SETTINGS.to_owned(), "Y".to_owned());
+    config::BUILTIN_SETTINGS
+        .write()
+        .unwrap()
+        .insert(keys::OPTION_HIDE_NETWORK_SETTINGS.to_owned(), "Y".to_owned());
 }
 
 fn read_custom_client_advanced_settings(
